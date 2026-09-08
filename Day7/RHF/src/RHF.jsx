@@ -10,11 +10,15 @@ const RHF = () => {
     reset,
     formState: { error },
   } = useForm();
-
+  
+  const formSubmit = (data)=>{
+    console.log(data)
+    reset();
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <form
-      onSubmit={handleSubmit((data)=>{console.log(data)})}
+      onSubmit={handleSubmit(formSubmit)}
       className="w-80 p-6 bg-white rounded-xl shadow-lg flex flex-col gap-4">
         <input
           className="w-full p-2 border border-gray-400 rounded outline-none focus:border-blue-500"
