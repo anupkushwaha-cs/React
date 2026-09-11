@@ -1,9 +1,7 @@
 import React from "react";
-
 import { useForm } from "react-hook-form";
-import { nanoid } from "nanoid";
 
-const Form = ({ setUser, setToggle, User, updatedData }) => {
+const Form = ({ setUser, setToggle }) => {
   const {
     register,
     handleSubmit,
@@ -11,43 +9,29 @@ const Form = ({ setUser, setToggle, User, updatedData }) => {
     formState: { errors },
   } = useForm({
     mode: "onChange",
-    defaultValues: updatedData,
   });
 
   const formSubmit = (data) => {
-    if (updatedData) {
-      setUser((prev) => {
-        return prev.map((val) => {
-          return val.id === updatedData.id
-            ? { ...data, id: updatedData.id }
-            : val;
-        });
-      });
-    } else {
-      const arr = [...User, { ...data, id: nanoid() }];
+    console.log(data);
 
-      console.log(arr);
-
-      setUser(arr);
-
-      localStorage.setItem("users", JSON.stringify(arr));
-    }
+    setUser((prev) => [...prev, data]);
 
     reset();
-    setToggle((prev) => !prev);
+    setToggle((prev)=> !prev);
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-96 bg-white p-6 rounded-xl shadow-md">
         <h1 className="text-2xl font-bold text-center mb-6">
-          {updatedData ? "Update User" : "Create User"}
+          Create User
         </h1>
 
         <form
           onSubmit={handleSubmit(formSubmit)}
           className="flex flex-col gap-4"
         >
+         
           <input
             {...register("name", {
               required: "Name is required",
@@ -57,8 +41,11 @@ const Form = ({ setUser, setToggle, User, updatedData }) => {
             className="p-3 border border-gray-300 rounded-lg outline-none focus:border-blue-500"
           />
 
-          {errors.name && <p className="text-red-700">{errors.name.message}</p>}
+          {errors.name && (
+            <p className="text-red-700">{errors.name.message}</p>
+          )}
 
+        
           <input
             {...register("email", {
               required: "Email is required",
@@ -110,7 +97,7 @@ const Form = ({ setUser, setToggle, User, updatedData }) => {
             type="submit"
             className="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 cursor-pointer"
           >
-            {updatedData ? "Update User" : "Add User"}
+            Add User
           </button>
         </form>
       </div>
