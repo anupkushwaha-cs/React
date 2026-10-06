@@ -4,7 +4,7 @@ import { MyStore } from '../Context/MyContext'
 
 const Navbar = () => {
 
- let {setIsCartOpen} = useContext(MyStore)
+ let {setIsCartOpen} = useContext(MyStore);
 
   return (
     <div className="flex items-center justify-between px-8 py-4 bg-gray-100">
