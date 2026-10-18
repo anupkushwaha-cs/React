@@ -1,20 +1,19 @@
-
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { decrement, increment, incrementByAmount } from './Feature/counterSlice'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+} from "./Feature/counterSlice";
 
 const App = () => {
-
-  const dispatch = useDispatch()
-  const count = useSelector((state) => state.counter.value)
-  const [num, setNum] = useState(0)
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.counter.value);
+  const [num, setNum] = useState(0);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950 flex items-center justify-center p-5">
-
       <div className="w-full max-w-md rounded-3xl border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur-xl">
-
-        {/* Header */}
         <div className="mb-8 text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-3xl shadow-lg shadow-indigo-500/30">
             🔢
@@ -29,7 +28,6 @@ const App = () => {
           </p>
         </div>
 
-        {/* Counter Display */}
         <div className="mb-7 rounded-2xl border border-white/10 bg-slate-950/50 p-7 text-center">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-indigo-300">
             Current Count
@@ -42,9 +40,7 @@ const App = () => {
           <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500" />
         </div>
 
-        {/* Increment & Decrement */}
         <div className="mb-7 grid grid-cols-2 gap-4">
-
           <button
             onClick={() => dispatch(increment())}
             className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-500 px-4 py-3.5 font-bold text-white shadow-lg shadow-indigo-500/20 transition duration-200 hover:-translate-y-1 hover:shadow-indigo-500/40 active:scale-95"
@@ -60,12 +56,9 @@ const App = () => {
             <span className="text-xl">−</span>
             Decrement
           </button>
-
         </div>
 
-        {/* Increment By Amount */}
         <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-
           <label className="mb-3 block text-sm font-semibold text-slate-200">
             Increment by Amount
           </label>
@@ -86,17 +79,14 @@ const App = () => {
               Add +
             </button>
           </div>
-
         </div>
 
-        {/* Footer */}
         <p className="mt-6 text-center text-xs text-slate-500">
           Built with ❤️ using React & Redux Toolkit
         </p>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
